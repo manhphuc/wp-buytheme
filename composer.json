@@ -1,0 +1,21 @@
+{
+  "name": "yivic/yivic-buy-theme",
+  "description": "An Yivic's plugin.",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Phuc Nguyen",
+      "email": "manhphucofficial@yahoo.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Yivic\\WpPlugin\\BuyTheme\\Base\\": "src/base",
+      "Yivic\\WpPlugin\\BuyTheme\\": "src"
+    }
+  },
+  "minimum-stability": "stable"
+}
