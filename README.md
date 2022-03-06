@@ -1,7 +1,7 @@
 +++ Yivic - Icon Buy Theme +++
 Contributors: manhphucofficial@yahoo.com
 License: GPLv3, MIT
-Tags: chat, live chat, button live chat
+Tags: button buy theme
 Requires at least: 5.0
 Tested up to: 5.9.1
 Stable tag: 1.0.0
