@@ -30,6 +30,7 @@ class Admin extends BaseObject {
 	}
 
     public function init() {
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_color_picker' ] );
         add_action( 'admin_init', [ $this, 'admin_init' ] );
         add_action( 'admin_menu', [ $this, 'admin_menu' ] );
     }
@@ -44,7 +45,7 @@ class Admin extends BaseObject {
 	 * Add more menu item to admin menu
 	 */
 	function admin_menu() {
-		add_submenu_page( 'options-general.php', 'Yivic - Buy Theme', 'Yivic - BuyTheme Options', 'manage_options', 'buytheme', [
+		add_submenu_page( 'options-general.php', 'Yivic - Buy Theme', 'Yivic - IconByTheme', 'manage_options', 'yivic-icon-buytheme', [
 			$this,
 			'display_options_page'
 		] );
@@ -67,7 +68,7 @@ class Admin extends BaseObject {
 	 * Add more menu item to admin menu
 	 */
 	function display_options() {
-		add_menu_page( 'WP Buy Theme Options', 'Shopback - WP Buy Theme', 'manage_options', 'buytheme', [
+		add_menu_page( 'WP Buy Theme Options', 'Shopback - WP Icon Buy Theme', 'manage_options', 'buytheme', [
 			$this,
 			'options'
 		] );

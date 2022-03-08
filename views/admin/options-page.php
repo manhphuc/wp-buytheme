@@ -13,7 +13,7 @@ wp_enqueue_script( 'buytheme_admin_script', BuyTheme::plugin_dir_url() . 'assets
 ?>
 <div class="options">
     <div class="options_header">
-        <h1><?php __( 'Buy Theme', BuyTheme::text_domain() ) ?></h1>
+        <h1><?php echo __( 'WP Icon Buy Theme', BuyTheme::text_domain() ) ?></h1>
     </div>
 
     <div class="options">
@@ -26,11 +26,52 @@ wp_enqueue_script( 'buytheme_admin_script', BuyTheme::plugin_dir_url() . 'assets
                     <table class="form-table">
                         <tr valign="top">
                             <th scope="row">
-                                <label for="phone_app_number"><?php esc_attr_e( 'Url buy theme', BuyTheme::text_domain() ) ?></label>
+                                <label for="buy_theme_url"><?php esc_attr_e( 'Url buy theme', BuyTheme::text_domain() ) ?></label>
                             </th>
                             <td>
-                                <input placeholder="https://yivic.com/demo-01" id="buy_theme_url" class="standard-input" type="text" name="buytheme[buy_theme_url]"
+                                <input style=" max-width: 315px; width: 100%; " placeholder="https://domain.com/demo-url" id="buy_theme_url" class="standard-input" type="text" name="buytheme[buy_theme_url]"
                                        value="<?php esc_html_e( $options['buy_theme_url'], BuyTheme::text_domain() ); ?>"/>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th scope="row">
+                                <label for="buy_theme_content"><?php esc_attr_e( 'Contents of the button', BuyTheme::text_domain() ) ?></label>
+                            </th>
+                            <td>
+                                <input style=" max-width: 315px; width: 100%; " placeholder="Buy this theme" id="buy_theme_content" class="standard-input" type="text" name="buytheme[buy_theme_content]"
+                                       value="<?php esc_html_e( $options['buy_theme_content'], BuyTheme::text_domain() ); ?>"/>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th scope="row">
+                                <label for="phone_app_number"><?php esc_attr_e( 'Attribute tag', BuyTheme::text_domain() ) ?></label>
+                            </th>
+                            <td>
+                                <input style=" max-width: 315px; width: 100%; " placeholder='target="_blank" rel="nofollow"' id="buy_theme_attribute" class="standard-input" type="text" name="buytheme[buy_theme_attribute]"
+                                       value="<?php esc_html_e( $options['buy_theme_attribute'], BuyTheme::text_domain() ); ?>"/>
+                                <br><i><?php esc_attr_e( 'Attributes are separated by space marks. Example: rel="nofollow" target="_blank"', BuyTheme::text_domain() ) ?></i>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th scope="row">
+                                <label for="buy_theme_color_icon"><?php esc_attr_e( 'Color icon', BuyTheme::text_domain() ) ?></label>
+                            </th>
+                            <td>
+                                <input id="buy_theme_color_icon" class="my-color-field" type="text" name="buytheme[buy_theme_color_icon]"
+                                       value="<?php esc_html_e( $options['buy_theme_color_icon'], BuyTheme::text_domain() ); ?>"/>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th scope="row">
+                                <label for="buy_theme_bg_color_text"><?php esc_attr_e( 'Background color text', BuyTheme::text_domain() ) ?></label>
+                            </th>
+                            <td>
+                                <input id="buy_theme_bg_color_text" class="my-color-field" type="text" name="buytheme[buy_theme_bg_color_text]"
+                                       value="<?php esc_html_e( $options['buy_theme_bg_color_text'], BuyTheme::text_domain() ); ?>"/>
                             </td>
                         </tr>
 

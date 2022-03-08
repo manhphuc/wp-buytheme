@@ -23,7 +23,7 @@ class Main extends BaseObject {
     }
 
     public function init() {
-        add_action( 'wp_footer', [ $this , 'get_contact_number_box' ] ); // add frontend to footer
+        add_action( 'wp_footer', [ $this , 'get_icon_buytheme_box' ] ); // add frontend to footer
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] ); //add style to frontend
     }
 
@@ -33,23 +33,24 @@ class Main extends BaseObject {
     }
 
     /**
-     * Get Contact Number Plugin box content
+     * Get Icon BuyTheme Plugin box content
      *
      * @return string
      */
-    public static function get_contact_number_box() {
+    public static function get_icon_buytheme_box() {
         $options = BuyTheme::instance()->options;
         $result  = '';
         $result .= '<div class="wp-buytheme">';
-
         // Buy theme section
-        $buyThemeURL = $options['buy_theme_url'] ? $options['buy_theme_url'] : '';
+        $buyThemeURL        = $options['buy_theme_url'] ? $options['buy_theme_url'] : '';
+        $buyThemeAttribute  = $options['buy_theme_attribute'] ? $options['buy_theme_attribute'] : '';
+        $buyThemeContent    = $options['buy_theme_content'] ? $options['buy_theme_content'] : __( 'Buy this theme', YIVIC_TEXT_DOMAIN );
         if( !empty( $buyThemeURL ) ) :
-        $result .= '   <div id="buytheme-phone" class="buytheme-contact">';
-        $result .= '        <div class="buytheme-phone">';
-        $result .= '            <div class="buytheme-phone-circle-fill"></div>';
-        $result .= '            <div class="buytheme-phone-img-circle">';
-        $result .= '                <a rel="noopener noreferrer nofollow external" href="'.$buyThemeURL.'" title="Mua theme này" target="_blank">';
+        $result .= '   <div id="buytheme-button" class="buytheme-contact">';
+        $result .= '        <div class="buytheme-button">';
+        $result .= '            <div class="buytheme-button-circle-fill"></div>';
+        $result .= '            <div class="buytheme-button-img-circle">';
+        $result .= '                <a href="'.$buyThemeURL.'" title="'.$buyThemeContent.'" '.$buyThemeAttribute.'>';
         $result .= '                    <img src="'.BuyTheme::plugin_dir_url().'assets/src/images/add-to-cart.png">';
         $result .= '                </a>';
         $result .= '            </div>';
@@ -58,12 +59,24 @@ class Main extends BaseObject {
 
         $result .= '   <div class="text-bar text-bar-n">';
         $result .= '        <div class="text-bar text-bar-n">';
-        $result .= '            <a rel="noopener noreferrer nofollow external" href="'.$buyThemeURL.'" title="Mua theme này" target="_blank">';
-        $result .= '                <span class="text-desc">Mua theme này</span>';
+        $result .= '            <a href="'.$buyThemeURL.'" title="'.$buyThemeContent.'" '.$buyThemeAttribute.'>';
+        $result .= '                <span class="text-desc">'.$buyThemeContent.'</span>';
         $result .= '            </a>';
         $result .= '        </div>';
         $result .= '   </div>';
 
+        $iconColor      = !empty( $options['buy_theme_color_icon'] ) ? $options['buy_theme_color_icon'] : '#dd382d';
+        $textBarBgColor = !empty( $options['buy_theme_bg_color_text'] ) ? $options['buy_theme_bg_color_text'] : '#402828';
+        $result .= '
+        <style>
+            .buytheme-button-bar a, #buytheme-button .buytheme-button-circle-fill, #buytheme-button .buytheme-button-img-circle {
+                background-color: '.$iconColor.';
+            }
+            #buytheme-button .buytheme-button-circle-fill {
+                opacity: 0.7;box-shadow: 0 0 0 0 '.$iconColor.';
+            }
+            .text-bar a {background: '.$textBarBgColor.'}
+        </style>';
         endif;
         // End buy theme section
 
